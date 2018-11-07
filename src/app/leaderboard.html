@@ -1,0 +1,32 @@
+<main role="main" class="container">
+  <div class="page-heading">
+    <h2 class="mt-4">VP Leaderboard</h2>
+    <p class="lead">Friend Steps Leaderboard</p>
+  </div>
+  <!-- Search form -->
+  <div class="active-cyan-3 active-cyan-4 mb-4">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <input class="form-control" type="text" ng-model='searchText' placeholder="Search" aria-label="Search">
+  </div>
+
+  <ul class="friends-list">
+    <li class='friends-list--header'>
+      <span>Rank</span>
+      <span>Friend</span>
+      <span>Steps</span>
+    </li>
+    <li ng-repeat="user in users | orderBy:'-steps' | filter:searchText">
+        <span>
+          # {{ $index+1 }}&nbsp;
+          <img ng-src="{{user.picture.thumbnail}}">
+        </span>
+      <span>
+          <b>{{ user.name.first }} {{ user.name.last }}</b>
+        </span>
+      <span>
+          {{ user.steps }}
+        </span>
+    </li>
+  </ul>
+
+</main>

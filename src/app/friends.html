@@ -1,0 +1,31 @@
+<main role="main" class="container">
+  <div class="page-heading">
+    <h2 class="mt-4">Suggested Friends</h2>
+  </div>
+  <div class="card-deck">
+    <div class="card" ng-repeat="user in users track by $index" style="width:400px">
+      <img class="card-img-top" ng-src="{{user.picture.large}}" alt="Card image">
+      <div class="card-body">
+        <h4 class="card-title">{{user.name.first}} {{user.name.last}}</h4>
+        <a href="#/friends" ng-disabled="{{user.disabled}}"
+           ng-click="sendFriendRequest($index)"
+           ng-class="user.requestSent? 'btn btn-dark' : 'btn btn-primary'">
+          {{user.requestSent ? user.requestSent : title}}
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="page-heading">
+    <h2 class="mt-4">Your Friends</h2>
+  </div>
+  <div class="card-deck">
+    <div class="card bg-dark text-white" ng-repeat="friend in friends" style="width:400px">
+      <img class="card-img" ng-src="{{friend.picture.large}}" alt="Card image">
+      <div class="text-white text-center d-flex align-items-center img-gradient-overlay py-5 px-4">
+        <div class="card-img-overlay img-fluid bg-transparent">
+          <h4 class="card-title">{{friend.name.first}} {{friend.name.last}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
